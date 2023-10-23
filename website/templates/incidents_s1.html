@@ -1,0 +1,124 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
+  %}
+<form method="POST">
+  <h3 align="center">test</h3>
+  <div class="form-group">
+    <label for="scheme">Scheme</label>
+    <select name="scheme">
+      {% for scheme in schemes %}
+          <option value="{{ scheme.id }}">{{ scheme.name }}</option>
+      {% endfor %}
+  </select>
+  </div>
+  <div class="form-group">
+    <label for="region">Region</label>
+    <select name="region">
+      {% for region in regions %}
+          <option value="{{ region.id }}">{{ region.name }}</option>
+      {% endfor %}
+  </select>
+  </div>
+  <div class="form-group">
+    <label for="district">District</label>
+    <select name="district">
+      {% for district in districts %}
+          <option value="{{ district.id }}">{{ district.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+    <div class="form-group form-inline">
+      <label for="datetime">Date of Incident</label>
+      <div class="row">
+          <div class="col-md-6">
+              <input
+                  type="date"
+                  class="form-control"
+                  id="date"
+                  name="date"
+              />
+          </div>
+          <div class="col-md-6">
+              <input
+                  type="time"
+                  class="form-control"
+                  id="time"
+                  name="time"
+              />
+          </div>
+      </div>
+  </div>
+
+  <div class="form-group form-inline">
+    <label for="datetime">Date Report Received</label>
+    <div class="row">
+        <div class="col-md-6">
+            <input
+                type="date"
+                class="form-control"
+                id="date"
+                name="date"
+            />
+        </div>
+        <div class="col-md-6">
+            <input
+                type="time"
+                class="form-control"
+                id="time"
+                name="time"
+            />
+        </div>
+    </div>
+  </div>
+
+
+  <div class="form-group form-inline">
+    <label for="responsible_engineer" class="mr-2">Responsible Engineer</label>
+    <input
+      type="text"
+      class="form-control"
+      id="responsible_engineer"
+      name="responsible_engineer"
+      placeholder="Enter Name of the Engineer"
+    />
+  </div>
+  <div class="form-group form-inline">
+    <label for="engineer_Designation" class="mr-2">Engineer Designation</label>
+    <input
+        type="text"
+        class="form-control"
+        id="engineer_Designation"
+        name="engineer_Designation"
+        placeholder="Enter Designation of Engineer"
+    />
+</div>
+
+
+
+    <br>
+    <label for="category">Category:</label>
+    <select name="category">
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <br />
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<script>
+  // Get today's date and time
+  var now = new Date();
+
+  // Format date as "YYYY-MM-DD"
+  var date = now.toISOString().split('T')[0];
+
+  // Format time as "HH:MM" in 24-hour format
+  var time = now.toTimeString().split(' ')[0].substring(0, 5);
+
+  // Set the input values
+  document.getElementById('date').value = date;
+  document.getElementById('time').value = time;
+</script>
+
+{% endblock %}
